@@ -12,7 +12,7 @@
 ## makeCacheMatrix() environment.
 
 makeCacheMatrix <- function(x = matrix()) {
-  inv <- matrix(rep(0,4),2,2)
+  inv <- NULL
   set <- function(y) {
     x <<- y
     inv <<- NULL
@@ -32,7 +32,7 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cacheSolve <- function(x, ...) {
   inv <- x$getinv()
-  if(!(max(inv[1,])==0 & min(inv[1,]==0))) {
+  if(!is.null(inv)) {
     message("getting cached data")
     return(inv)
   }
